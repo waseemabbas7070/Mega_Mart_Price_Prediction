@@ -12,31 +12,16 @@ class Clean:
         pass
     def data_clean(self,data=data):
       mylist = []
-      for i in data['Item_Fat_Content']:
-        if i == 'Low Fat':
+      for i in df['Item_Fat_Content']:
+        if i == 'low fat':
          mylist.append('Low Fat')
-        elif i == 'low fat':
+        elif i == 'LF':
             mylist.append('Low Fat')
-        elif i == 'Regular':
+        elif i == 'reg':
             mylist.append('Regular')
         else:
-            mylist.append('Regular')
-        data['Item_Fat_Content'] = mylist  
-         
-        x =data.drop("Item_Outlet_Sales",axis=1)
-        y = data["Item_Outlet_Sales"] 
-        # categorical and numeric 
-        cat = x.select_dtypes(object).columns.tolist()
-        num = x.select_dtypes('number').columns.tolist()
-        # Imputer for fill null or missing values on Categorical data
-        impute= SimpleImputer(strategy='most_frequent')
-        impute.fit(x[cat])
-        x[cat]=impute.transform(x[cat])
-        
-        # Imputer for fill null or missing values on Numerical  data
-        impute = SimpleImputer(strategy='mean')
-        impute.fit(x[num])
-        x[num]=impute.transform(x[num])
+            mylist.append(i) 
+        return mylist
 
 
 
