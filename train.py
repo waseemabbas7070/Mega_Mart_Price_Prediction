@@ -3,7 +3,7 @@ from pipelines.model import Models
 from sklearn.metrics import r2_score
 import joblib as j
 spliter = DataSpliter()
-x_train, x_test, y_train, y_test=spliter.split()
+x_train, x_test, y_train, y_test=spliter.data_spliter()
 model = Models()
 grid_search=model.randomforest()
 print('Starting Training')
